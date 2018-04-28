@@ -92,15 +92,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                   */
 
+               /*
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,RecyclerViewActivity.class);
                 startActivity(intent);
+                */
 
-               /*
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,PieChartActivity.class);
                 startActivity(intent);
-                */
                /*
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,RxjavaActivity.class);
@@ -112,11 +112,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 */
 
-               /*
+/*
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,RxjavaRefreshTokenActivity.class);
                 startActivity(intent);
-                */
+*/
 
                 /*
                 Intent intent = new Intent();
