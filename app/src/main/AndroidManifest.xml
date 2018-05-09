@@ -50,6 +50,8 @@
 
         <activity android:name=".mvptest.MvpTestActivity"/>
 
+        <activity android:name=".FlexboxLayoutActivity"/>
+
         <service android:name="service.LocalService"/>
         <service android:name="service.RemoteService" android:process=":remote"/>
 

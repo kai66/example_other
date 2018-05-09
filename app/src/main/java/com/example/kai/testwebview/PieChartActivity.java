@@ -3,34 +3,155 @@ package com.example.kai.testwebview;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
+import com.example.kai.testwebview.adapter.TabPagerAdapter;
+import com.example.kai.testwebview.adapter.TimeLineAdapter;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.vipulasri.timelineview.TimelineView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import entity.ExampleData;
+import me.yokeyword.fragmentation.SupportActivity;
+import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * Created by kai on 2018/3/13.
  */
 
-public class PieChartActivity extends AppCompatActivity {
+public class PieChartActivity extends SupportActivity {
 
     PieChart mPieChart;
+    RecyclerView recycle_view;
+
+    TabLayout tabLayout;
+
+    ViewPager viewPager;
+    TabLayout.Tab tab01;
+    TabLayout.Tab tab02;
+
+    String[] titles = new String[10];
+    SupportFragment[] supportFragments = new SupportFragment[10];
+    TabPagerAdapter tabPagerAdapter;
+
+    private int prePosition = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_piechart);
-        mPieChart = (PieChart)findViewById(R.id.chartview);
-        initView();
+        initPieChatView();
+        initTimeLineView();
+        initTabLayout();
     }
 
-    private void initView(){
+    private void initTabLayout(){
+        viewPager = (ViewPager)findViewById(R.id.viewpager);
+        tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+        tab01 = tabLayout.newTab();
+        tab01.setText("tab01");
+        tab02 = tabLayout.newTab();
+        tab02.setText("tab02");
+        tabLayout.addTab(tab01);
+        tabLayout.addTab(tab02);
+
+        titles[0]= "tab01";
+        titles[1]= "tab02";
+
+        titles[2]= "tab01";
+        titles[3]= "tab02";
+
+        titles[4]= "tab01";
+        titles[5]= "tab02";
+
+        titles[6]= "tab01";
+        titles[7]= "tab02";
+
+        titles[8]= "tab01";
+        titles[9]= "tab02";
+
+        supportFragments[0] =  TabTestFragment.newInstance();
+        supportFragments[1] = TabLayoutTestFragment.newInstance();
+
+        supportFragments[2] =  TabTestFragment.newInstance();
+        supportFragments[3] = TabLayoutTestFragment.newInstance();
+
+        supportFragments[4] =  TabTestFragment.newInstance();
+        supportFragments[5] = TabLayoutTestFragment.newInstance();
+
+        supportFragments[6] =  TabTestFragment.newInstance();
+        supportFragments[7] = TabLayoutTestFragment.newInstance();
+
+        supportFragments[8] =  TabTestFragment.newInstance();
+        supportFragments[9] = TabLayoutTestFragment.newInstance();
+
+        tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager(),supportFragments,titles);
+        viewPager.setAdapter(tabPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+        viewPager.setOffscreenPageLimit(2);
+        viewPager.setCurrentItem(0);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition(),true);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                prePosition = tab.getPosition();
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
+
+    private void initTimeLineView(){
+
+        ArrayList<ExampleData> data = new ArrayList<>();
+
+        ExampleData exampleData = new ExampleData();
+        exampleData.setTitle("test01");
+        exampleData.setContent("content01");
+        data.add(exampleData);
+
+        ExampleData exampleData02 = new ExampleData();
+        exampleData02.setTitle("test02");
+        exampleData02.setContent("content02");
+        data.add(exampleData02);
+
+        ExampleData exampleData03 = new ExampleData();
+        exampleData03.setTitle("test01");
+        exampleData03.setContent("content01");
+        data.add(exampleData03);
+
+        ExampleData exampleData04 = new ExampleData();
+        exampleData04.setTitle("test01");
+        exampleData04.setContent("content01");
+        data.add(exampleData04);
+
+        recycle_view = (RecyclerView)findViewById(R.id.recycle_view);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recycle_view.setLayoutManager(linearLayoutManager);
+        TimeLineAdapter timeLineAdapter =  new TimeLineAdapter(PieChartActivity.this,data);
+        recycle_view.setAdapter(timeLineAdapter);
+        timeLineAdapter.notifyDataSetChanged();
+    }
+
+    private void initPieChatView(){
+        mPieChart = (PieChart)findViewById(R.id.chartview);
         List<Integer> colors = new ArrayList<>();
         colors.add(Color.BLACK);
         colors.add(Color.GRAY);

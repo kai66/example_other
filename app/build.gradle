@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.kai.testwebview"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -68,6 +68,14 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
 
     compile 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+
+    compile 'com.github.vipulasri:timelineview:1.0.6'
+
+    compile 'com.android.support:recyclerview-v7:26.0.0'
+
+    compile 'me.yokeyword:fragmentation:0.10.3'
+
+    implementation 'com.google.android:flexbox:0.3.2'
 
 
 }

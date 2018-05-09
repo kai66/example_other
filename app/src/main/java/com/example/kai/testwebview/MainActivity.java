@@ -97,10 +97,14 @@ public class MainActivity extends AppCompatActivity {
                 intent.setClass(MainActivity.this,RecyclerViewActivity.class);
                 startActivity(intent);
                 */
-
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,FlexboxLayoutActivity.class);
+                startActivity(intent);
+               /*
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,PieChartActivity.class);
                 startActivity(intent);
+                */
                /*
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,RxjavaActivity.class);
