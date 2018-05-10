@@ -121,25 +121,26 @@ public class PieChartActivity extends SupportActivity {
 
         ArrayList<ExampleData> data = new ArrayList<>();
 
-        ExampleData exampleData = new ExampleData();
-        exampleData.setTitle("test01");
-        exampleData.setContent("content01");
-        data.add(exampleData);
+        for (int i =0 ;i<2;i++){
+            ExampleData exampleData = new ExampleData();
+            exampleData.setTitle("test"+i);
+            exampleData.setContent("content"+i);
+            data.add(exampleData);
+        }
 
-        ExampleData exampleData02 = new ExampleData();
-        exampleData02.setTitle("test02");
-        exampleData02.setContent("content02");
-        data.add(exampleData02);
+        ExampleData exampleData01 = new ExampleData();
+        exampleData01.setTitle("test");
+        exampleData01.setContent("contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent");
+        data.add(exampleData01);
 
-        ExampleData exampleData03 = new ExampleData();
-        exampleData03.setTitle("test01");
-        exampleData03.setContent("content01");
-        data.add(exampleData03);
+        for (int i =0 ;i<2;i++){
+            ExampleData exampleData = new ExampleData();
+            exampleData.setTitle("test"+i);
+            exampleData.setContent("content"+i);
+            data.add(exampleData);
+        }
 
-        ExampleData exampleData04 = new ExampleData();
-        exampleData04.setTitle("test01");
-        exampleData04.setContent("content01");
-        data.add(exampleData04);
+
 
         recycle_view = (RecyclerView)findViewById(R.id.recycle_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

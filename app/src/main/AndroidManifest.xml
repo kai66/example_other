@@ -52,6 +52,9 @@
 
         <activity android:name=".FlexboxLayoutActivity"/>
 
+        <activity android:name=".RlTextViewActivity"/>
+        <activity android:name=".ExpandActivity"/>
+
         <service android:name="service.LocalService"/>
         <service android:name="service.RemoteService" android:process=":remote"/>
 
