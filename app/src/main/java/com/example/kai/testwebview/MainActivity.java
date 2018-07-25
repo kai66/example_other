@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,9 +31,6 @@ import com.example.kai.testwebview.alarm.AlarmActivity;
 import com.example.kai.testwebview.mvptest.MvpTestActivity;
 
 import Util.Utils;
-import base.BaseMVPActivity;
-import base.IPresenter;
-import me.yokeyword.fragmentation.SupportActivity;
 import service.LocalService;
 import service.RemoteService;
 import widget.AnimType;
@@ -40,24 +39,17 @@ import widget.OnDialogClickListener;
 import widget.OnKeyType;
 import widget.SimpleOnKeyListener;
 
-public class MainActivity extends BaseMVPActivity {
+public class MainActivity extends AppCompatActivity {
 
     private EditText mEditText;
 
     @Override
-    protected int getLayout() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    protected IPresenter getPresenter() {
-        return null;
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         Utils.setApplication(MainActivity.this.getApplication());
+
         View view = (View)findViewById(R.id.content_main);
         Button Button_WebView = (Button)findViewById(R.id.button_webview);
         Button_WebView.setOnClickListener(new View.OnClickListener() {
@@ -111,22 +103,11 @@ public class MainActivity extends BaseMVPActivity {
                 startActivity(intent);
                 */
 
-               /*
+
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,PieChartActivity.class);
                 startActivity(intent);
-                */
 
-                Bundle bundle = new Bundle();
-                bundle.putInt("type",1);
-                startNewActivity(MainActivity.this,PlatformActivity.class,bundle);
-
-                /*
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this,PlatformActivity.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-                */
 
                /*
                 Intent intent = new Intent();
@@ -197,6 +178,8 @@ public class MainActivity extends BaseMVPActivity {
         mEditText = (EditText)findViewById(R.id.edittext);
         mEditText.addTextChangedListener(mTextWatcher);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -295,12 +278,37 @@ public class MainActivity extends BaseMVPActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     @Override
-    public void onBackPressedSupport() {
-        super.onBackPressedSupport();
-        MainActivity.this.finish();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.v("kevin","onBackPressed");
+        MainActivity.this.finish();
+        //System.exit(0);
+    }
 }
