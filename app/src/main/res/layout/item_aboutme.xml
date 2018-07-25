@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/item_icon"
+        android:layout_marginLeft="16dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:text="题目"
+        android:id="@+id/item_title"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/item_icon"
+        android:layout_marginLeft="16dp"
+        android:textColor="@android:color/black"
+        />
+
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/round_back"
+        android:id="@+id/tv_num"
+        android:gravity="center"
+        android:layout_toLeftOf="@+id/img_go"
+        android:text="455"
+        android:textSize="13sp"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:layout_width="8dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/umeng_arrow"
+        android:layout_height="14dp"
+        android:id="@+id/img_go"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:background="@color/line_color"
+        />
+
+</RelativeLayout>
+

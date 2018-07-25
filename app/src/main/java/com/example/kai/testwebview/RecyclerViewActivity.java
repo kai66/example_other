@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -86,14 +87,33 @@ public class RecyclerViewActivity extends AppCompatActivity {
         });
     }
 
-
+    private Button bt_one;
+    private Button bt_two;
+    private LinearLayoutManager mGlobalLLmanager;
 
     private void initAdapter(){
         mHeadView = LayoutInflater.from(RecyclerViewActivity.this).inflate(R.layout.activity_recycleview_headview, null);
         science_recycleview = mHeadView.findViewById(R.id.science_recycleview);
         problem_recycleview = mHeadView.findViewById(R.id.problem_recycleview);
 
-        LinearLayoutManager mGlobalLLmanager = new LinearLayoutManager(RecyclerViewActivity.this, LinearLayoutManager.VERTICAL, false);
+        bt_one = (Button)mHeadView.findViewById(R.id.bt_one);
+        bt_two = (Button)mHeadView.findViewById(R.id.bt_two);
+
+        example_recycleview.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                Log.v("TAG","kevin newState="+newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                Log.v("TAG","kevin dx="+dx+"  dy="+dy);
+            }
+        });
+
+        mGlobalLLmanager = new LinearLayoutManager(RecyclerViewActivity.this, LinearLayoutManager.VERTICAL, false);
         example_recycleview.setLayoutManager(mGlobalLLmanager);
 
         exampleAdapter = new ExampleAdapter(example_recycleview);

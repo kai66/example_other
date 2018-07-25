@@ -26,13 +26,20 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+             >
+
+        </activity>
+
+        <activity android:name=".SplashActivity"
+            android:theme="@style/SplashTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity android:name=".SwipCardActivity"/>
         <activity android:name=".alarm.AlarmActivity"/>
         <activity android:name=".alarm.ClockAlarmActivity"/>
@@ -55,6 +62,8 @@
         <activity android:name=".RlTextViewActivity"/>
         <activity android:name=".ExpandActivity"/>
 
+        <activity android:name=".PlatformActivity"/>
+
         <service android:name="service.LocalService"/>
         <service android:name="service.RemoteService" android:process=":remote"/>
 
@@ -72,6 +81,16 @@
                 <action android:name="com.youlan.alarmset.service.restart"/>
             </intent-filter>
         </receiver>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.kai.testwebview"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
 
 
     </application>

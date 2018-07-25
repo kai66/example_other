@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingTop="8dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_name"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="name"/>
+    <!--
+        corner_radius         边缘的弧度数
+        border_width         描边的宽度
+        border_color         描边的颜色
+        mutate_background     背景是否变化
+        oval                 是否为圆形
+        android:scaleType     拉伸的方式
+     -->
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/img_view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:src="@color/colorPrimary"
+        android:scaleType="fitXY"
+        app:riv_corner_radius="5dp"
+        app:riv_oval="false"
+        android:layout_marginTop="8dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_date"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:text="date"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_viewnum"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_marginLeft="6dp"/>
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@color/colorPrimary"
+                android:layout_marginLeft="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_likenum"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10"
+                android:layout_marginLeft="6dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

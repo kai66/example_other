@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import me.yokeyword.fragmentation.SupportActivity;
+
 /**
  * Created by kai on 2018/4/19.
  */
 
-public abstract class IActivity<T extends IPresenter> extends AppCompatActivity {
+public abstract class IActivity<T extends IPresenter> extends SupportActivity {
 
     protected T presenter;
 
@@ -18,6 +20,7 @@ public abstract class IActivity<T extends IPresenter> extends AppCompatActivity 
         setContentView(getLayoutId());
         presenter = getPresenter();
     }
+
 
     protected abstract int getLayoutId();
 

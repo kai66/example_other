@@ -42,4 +42,10 @@
         <attr name="leftBottomTvColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="AboutMeItem">
+        <attr name="item_title" format="string"/>
+        <attr name="item_icon" format="integer"/>
+    </declare-styleable>
+
+
 </resources>

@@ -4,4 +4,7 @@
     <item name="rightImg" type="id"/>
     <item name="leftTv" type="id"/>
 
+
+    <item name="adapter_item_tag_key" type="id"/>
+
 </resources>
