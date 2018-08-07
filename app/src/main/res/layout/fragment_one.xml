@@ -124,6 +124,12 @@
             android:id="@+id/bt_gallery"
             android:text="gallery effect"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_contract"
+            android:text="contract_fragment"/>
+
     </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

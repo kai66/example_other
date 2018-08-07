@@ -31,6 +31,7 @@ import com.example.kai.testwebview.alarm.AlarmActivity;
 import com.example.kai.testwebview.mvptest.MvpTestActivity;
 
 import Util.Utils;
+import base.BaseMVPActivity;
 import service.LocalService;
 import service.RemoteService;
 import widget.AnimType;
@@ -104,11 +105,20 @@ public class MainActivity extends AppCompatActivity {
                 */
 
 
+               /*
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,PieChartActivity.class);
                 startActivity(intent);
+                */
 
-
+                Bundle bundle = new Bundle();
+                bundle.putInt("type",1);
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,PlatformActivity.class);
+                if(bundle != null) {
+                    intent.putExtras(bundle);
+                }
+                startActivity(intent);
                /*
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,ExpandActivity.class);

@@ -181,6 +181,14 @@ public class FragmentOne extends BaseFragment{
             }
         });
 
+        view.findViewById(R.id.bt_contract).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start(new ContractFragment());
+            }
+        });
+
+
 
     }
 
