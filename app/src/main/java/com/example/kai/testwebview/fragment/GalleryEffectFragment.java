@@ -62,7 +62,7 @@ public class GalleryEffectFragment extends BaseFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_gallery_effect,container,false);
-        Log.v("TAG","brancher00003");
+        Log.v("TAG","brancher00003test");
         mRecycleView = (RecyclerView)view.findViewById(R.id.recycle_view);
 
         final TextView tv_choose = (TextView)view.findViewById(R.id.tv_choose);
