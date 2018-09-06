@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.v("TAG","test03");
+        Log.v("TAG","test033");
         Utils.setApplication(MainActivity.this.getApplication());
 
         View view = (View)findViewById(R.id.content_main);
