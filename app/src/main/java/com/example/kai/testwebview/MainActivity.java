@@ -7,6 +7,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -30,18 +31,36 @@ import android.widget.Toast;
 import com.example.kai.testwebview.alarm.AlarmActivity;
 import com.example.kai.testwebview.mvptest.MvpTestActivity;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import Util.Utils;
+import entity.DetailInfo;
 import service.LocalService;
 import service.RemoteService;
 import widget.AnimType;
+import widget.ArrowDownloadButton;
 import widget.NoticeCenterDialog;
 import widget.OnDialogClickListener;
 import widget.OnKeyType;
+import widget.RightMarkView;
 import widget.SimpleOnKeyListener;
+import widget.StepView;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText mEditText;
+    private ArrowDownloadButton bt_arrow_download;
+
+    private  StepView step_view;
+
+    RightMarkView right_MarkView;
+
+    private int count = 0;
+    private int progress = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +68,58 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.v("TAG","MainActivity02");
         Utils.setApplication(MainActivity.this.getApplication());
+        bt_arrow_download = (ArrowDownloadButton)findViewById(R.id.bt_arrow_download);
+        bt_arrow_download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ((count % 2) == 0) {
+                    bt_arrow_download.startAnimating();
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progress = progress + 1;
+                                    bt_arrow_download.setProgress(progress);
+                                }
+                            });
+                        }
+                    }, 800, 20);
+                } else {
+                    bt_arrow_download.reset();
+                }
+                count++;
+            }
+        });
+
+        step_view = (StepView)findViewById(R.id.step_view);
+
+        List<String> titles=new ArrayList<String>();
+        titles.add("下订单");
+        titles.add("支付完成");
+        titles.add("已经发货");
+        titles.add("交易完成");
+        step_view.setStepTitles(titles);
+
+        findViewById(R.id.btn_next).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                step_view.nextStep();
+                step_view.setStepStatus(1);
+            }
+        });
+
+        findViewById(R.id.btn_reset).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                step_view.reset();
+                right_MarkView.startAnimator();
+            }
+        });
+
+        right_MarkView = (RightMarkView)findViewById(R.id.right_MarkView);
 
         View view = (View)findViewById(R.id.content_main);
         Button Button_WebView = (Button)findViewById(R.id.button_webview);
@@ -105,9 +176,15 @@ public class MainActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent();
-                intent.setClass(MainActivity.this,PieChartActivity.class);
-                startActivity(intent);
-
+                //intent.setClass(MainActivity.this,PieChartActivity.class);
+                intent.setClassName("com.daile.youlan", "com.daile.youlan.util.update.DownloadService");
+               // DetailInfo detailInfo = new DetailInfo();
+               // intent.setAction("serializable_action");
+                intent.putExtra("url",new DetailInfo()); //此处是传入畸形数据
+                //intent.setData(Uri.parse("kkkk"));
+                //intent("url",new DetailInfo()); //此处是传入畸形数据
+                startService(intent);
+                //startActivity(intent);
 
                /*
                 Intent intent = new Intent();

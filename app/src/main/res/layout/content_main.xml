@@ -7,7 +7,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.kai.testwebview.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    xmlns:step="http://schemas.android.com/apk/res-auto">
 
     <!--
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,6 +69,54 @@
         android:layout_height="wrap_content"
         android:id="@+id/edittext"
         android:hint="@string/app_name"/>
+
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:visibility="gone">
+
+        <widget.ArrowDownloadButton
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_arrow_download"
+            android:minHeight="50dp"
+           />
+
+    </LinearLayout>
+
+
+    <widget.StepView
+        android:id="@+id/step_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        step:totalstep="4"
+        step:completestep="1"
+        app:smallradius="10dp"
+        app:largeradius="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        />
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        />
+
+
+    <widget.RightMarkView
+        android:id="@+id/right_MarkView"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
 
 
 </LinearLayout>

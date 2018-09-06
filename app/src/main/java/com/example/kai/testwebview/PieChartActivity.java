@@ -1,12 +1,15 @@
 package com.example.kai.testwebview;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.kai.testwebview.adapter.TabPagerAdapter;
 import com.example.kai.testwebview.adapter.TimeLineAdapter;
@@ -17,6 +20,8 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.vipulasri.timelineview.TimelineView;
 
+import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +54,12 @@ public class PieChartActivity extends SupportActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_piechart);
+        Intent i = getIntent();
+        if(i.getAction().equals("serializable_action")){
+            i.getSerializableExtra("seriadddddlizable_dkey"); //未做异常判断
+        }
+        //Parcelable urlStr = getIntent().getParcelableExtra("test");
+       // Log.v("TAG","kevin urlstri=="+urlStr);
         initPieChatView();
         initTimeLineView();
         initTabLayout();
